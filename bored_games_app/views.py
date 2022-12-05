@@ -4,7 +4,8 @@ from django.views.generic import CreateView, DetailView, ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
-from . import models
+from . models import BoardGame, BoardGameInstance, BoardGameRental, BoardGameReview
+
 
 # Create your views here.
 
@@ -13,8 +14,7 @@ from . import models
 def landing_page_view(request):
     return render(request, "bored_games_app/index.html")
 
-# CLASS-BASED VIEWS
-
-class GameDetail(DetailView):
-
-    model = models.BoardGame
+def games_page_view(request):
+    boardgames = BoardGameRental.objects.filter(borrower= request.user).order_by("date_rented")
+    context = {"boardgames" : boardgames}
+    return render(request, "bored_games_app/games.html", context)
