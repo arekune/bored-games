@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "login.css" %}">
+{% endblock stylesheet %}
+
+{% block title %}
+ <title>Bored Games – Login</title>
+{% endblock title %}
+
+{% block page %}
+<div class="page">
+
+    <div class="content">
+        <h1>Log in to your profile</h1>
+
+        {% if form.errors %}
+            <p>Your username or password was incorrect. Please try again.</p>
+        {% endif %}
+
+        <!-- if user gets "nexted", it means they aren't authenticated or they don't have permission for the page-->
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>You don't have permission for this page.</p>
+            {% else %}
+                <p>Please log in to see this page.</p>
+            {% endif %}
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{form.username.label_tag}}
+                {{form.username}}
+            
+                {{form.password.label_tag}}
+                {{form.password}}
+            </table>
+    
+            <button type="submit">Log in</button>
+            <input type="hidden" name="next" value="{{next}}">
+        </form>
+
+        <div class="register">
+            <h2>New here?</h2>
+            <a href="{% url "bored_games:registration" %}">
+                Register here!
+             </a>
+        </div>
+    </div>
+{% endblock page %}
