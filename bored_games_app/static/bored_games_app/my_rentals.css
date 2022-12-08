@@ -1,0 +1,107 @@
+.page {
+  align-items: center;
+  background-image: url("board-game-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(158, 235, 215);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 5rem);
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 1.56rem 0 1.56rem 0;
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+}
+
+h1:hover {
+  color: rgb(233, 210, 107);
+  transform: scale(1.01);
+}
+
+.username {
+  color: rgba(255, 255, 255, 0.959);
+}
+
+.username:hover {
+  color: rgb(250, 101, 75);
+}
+
+h2 {
+  color: rgba(255, 255, 255, 0.959);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  margin-left: 4rem;
+}
+
+.content ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0 4rem 0 4rem;
+}
+
+.game,
+.review {
+  background-color: rgb(0, 152, 121);
+  border-top-left-radius: 0.3125rem;
+  border-top-right-radius: 0.3125rem;
+  color: white;
+}
+
+.game li,
+.review li {
+  font-size: 1.875rem;
+  font-weight: 900;
+}
+
+.game,
+.game-data {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  padding: 1rem;
+  place-content: center;
+}
+
+.review,
+.review-data {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  padding: 1rem;
+  place-content: center;
+}
+
+.game-data,
+.review-data {
+  background-color: rgba(243, 243, 243, 0.75);
+  color: black;
+  transition: all 0.25s ease-in-out;
+}
+
+.game-data li,
+.review-data li {
+  font-size: 1.25rem;
+}
+
+.game-data:hover,
+.review-data:hover {
+  color: #009879;
+  transform: scale(1.01);
+}
+
+.button {
+  background-color: rgb(228, 157, 44);
+  border-radius: 4px;
+  color: white;
+  padding: 0.5rem 1.25rem;
+}
+
+.button:hover {
+  background-color: rgb(221, 134, 34);
+}
+
+#review {
+  margin-top: 4rem;
+}
