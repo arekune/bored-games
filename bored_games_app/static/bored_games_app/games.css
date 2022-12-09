@@ -38,6 +38,12 @@ h1:hover {
   background-color: rgb(243, 187, 124);
 }
 
+.content {
+  max-height: 18rem;
+  max-width: 95vw;
+  overflow: auto;
+}
+
 .content ul {
   display: flex;
   flex-direction: column;
@@ -94,7 +100,10 @@ h1:hover {
 }
 
 .rented-content {
-  margin-top: 6rem;
+  margin-top: 4rem;
+  max-height: 18rem;
+  max-width: 80vw;
+  overflow: auto;
 }
 
 .rented-content ul {
@@ -139,10 +148,4 @@ h1:hover {
 
 .checkmark {
   text-align: right;
-}
-
-.overflow {
-  background-color: black;
-  background-size: cover;
-  height: 30vh;
 }
