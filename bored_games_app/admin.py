@@ -5,16 +5,17 @@ from .models import *
 
 class BoardGameAdmin(admin.ModelAdmin):
     pass
-admin.site.register(BoardGame, BoardGameAdmin)
 
 class BoardGameInstanceAdmin(admin.ModelAdmin):
     pass
-admin.site.register(BoardGameInstance, BoardGameInstanceAdmin)
 
 class BoardGameRentalAdmin(admin.ModelAdmin):
     pass
-admin.site.register(BoardGameRental, BoardGameRentalAdmin)
 
 class BoardGameReviewAdmin(admin.ModelAdmin):
     pass
+
+admin.site.register(BoardGame, BoardGameAdmin)
+admin.site.register(BoardGameInstance, BoardGameInstanceAdmin)
+admin.site.register(BoardGameRental, BoardGameRentalAdmin)
 admin.site.register(BoardGameReview, BoardGameReviewAdmin)
