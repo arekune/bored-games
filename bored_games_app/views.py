@@ -73,10 +73,12 @@ def new_games(request):
 
 
 @login_required
-def new_reviews(request):
+def new_reviews(request, id):
+
+    game = BoardGame.objects.get(pk = id)
 
     if request.method == "POST":
-        form = ReviewForm(request.POST)
+        form = ReviewForm(request.POST, initial={"game": game, "review": "vittu"})
 
         if form.is_valid():
             review = form.save(commit = False)
@@ -85,7 +87,7 @@ def new_reviews(request):
             return redirect(reverse("bored_games:game_detail", kwargs = {"id": review.game.id}))
     
     else:
-        form = ReviewForm()
+        form = ReviewForm(initial={"game": game})
 
     return render(request, "bored_games_app/add_review.html", context = {"form": form})
 

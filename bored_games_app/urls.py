@@ -17,7 +17,7 @@ urlpatterns = [
     path("add_game", views.new_games, name = "add_game"),
 
     # Form to add new review for a game
-    path("add_review", views.new_reviews, name = "add_review"),
+    path("add_review/<int:id>", views.new_reviews, name = "add_review"),
 
     # Form to add new copy/instance of an existing game in the database
     path("add_copy/", views.new_copies, name = "add_copy"),
