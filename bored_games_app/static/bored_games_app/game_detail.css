@@ -7,7 +7,6 @@
   color: rgb(158, 235, 215);
   display: flex;
   flex-direction: column;
-  height: 101vh;
   width: calc(100vw - 0.95rem);
 }
 
@@ -116,6 +115,10 @@ li {
 
 #summary {
   font-size: 1.5rem;
+}
+
+.reviews {
+  max-width: 85vw;
 }
 
 #reviewer,
