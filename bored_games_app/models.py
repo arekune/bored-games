@@ -75,5 +75,5 @@ class BoardGameReview(models.Model):
     date_edited = models.DateTimeField(auto_now = True)
 
     def __str__(self):
-        """Return a string representation of the first 100 characters of a Review object's text."""
-        return f"{self.review[:100]}"
+        """Return a string representation of the first 300 characters of a Review object's text."""
+        return f"{self.review[:300]}"
