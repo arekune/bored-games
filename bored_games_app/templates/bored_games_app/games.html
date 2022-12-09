@@ -25,13 +25,13 @@
 
             {% for game in games %}
                 <div class="game-data">
-                    <a href="{% url "bored_games:game_detail" game.id %}">
-                        <li>{{ game.title }}</li>
+                    <a href="{% url "bored_games:game_detail" game.game.id %}">
+                        <li>{{ game.game.title }}</li>
                     </a>
-                    {% if game.min_no_of_players == game.max_no_of_players %}
-                        <li>{{ game.min_no_of_players }}</li>
+                    {% if game.game.min_no_of_players == game.game.max_no_of_players %}
+                        <li>{{ game.game.min_no_of_players }}</li>
                     {% else %}
-                        <li>{{ game.min_no_of_players }} – {{ game.max_no_of_players }}</li>
+                        <li>{{ game.game.min_no_of_players }} – {{ game.game.max_no_of_players }}</li>
                     {% endif %}
                     {% if user.is_authenticated %}
                         {% if limit_reached == True %}
@@ -40,7 +40,7 @@
                             </div>
                         {% else %}
                             <li>
-                                <a href="{% url "bored_games:rent_game" %}" class="button">Rent the Game!</a>
+                                <a href="{% url "bored_games:rent_game" game.id %}" class="button">Rent the Game!</a>
                             </li>
                         {% endif %}
                     {% else %}
@@ -57,30 +57,27 @@
                 <div class="rented-game">
                     <li>Title</li>
                     <li>Number of Players</li>
-                    <li class="checkmark">On loan</li>
+                    <li class="checkmark">On loan to</li>
                 </div>
 
                 {% for game in rented_games %}
                     <div class="rented-game-data">
-                        <a href="{% url "bored_games:game_detail" game.id %}">
-                            <li>{{ game.title }}</li>
+                        <a href="{% url "bored_games:game_detail" game.game.id %}">
+                            <li>{{ game.game.title }}</li>
                         </a>
-                        {% if game.min_no_of_players == game.max_no_of_players %}
-                            <li>{{ game.min_no_of_players }}</li>
+                        {% if game.game.game.min_no_of_players == game.game.max_no_of_players %}
+                            <li>{{ game.game.min_no_of_players }}</li>
                         {% else %}
-                            <li>{{ game.min_no_of_players }} – {{ game.max_no_of_players }}</li>
+                            <li>{{ game.game.min_no_of_players }} – {{ game.game.max_no_of_players }}</li>
                         {% endif %}
+                        <!-- for posterity
                         <li class="checkmark">✓</li>
+                        -->
+                        <li class="checkmark">{{ game.latest_borrower }}</li>
                     </div>
                 {% endfor %}
             </ul>
         </div>
     {% endif %}
 </div>
-
-{% if extended_page == True %}
-    <div class="overflow">
-
-    </div>
-{% endif %}
 {% endblock page %}

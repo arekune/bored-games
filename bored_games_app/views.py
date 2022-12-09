@@ -22,8 +22,8 @@ def landing_page(request):
 
 
 def games_page(request):
-    games = BoardGame.objects.filter(boardgameinstance__status="a").distinct()
-    rented_games = BoardGame.objects.filter(boardgameinstance__status="r").distinct()
+    games = BoardGameInstance.objects.filter(status = "a").distinct().order_by("game")
+    rented_games = BoardGameInstance.objects.filter(status = "r").distinct().order_by("game")
 
     if BoardGameRental.objects.filter(borrower = request.user.id).count() >= 3:
         limit_reached = True
@@ -107,25 +107,17 @@ def new_copies(request):
 
 
 @login_required
-def game_rentals(request):
+def game_rentals(request, id):
 
-    if request.method == "POST":
-        form = BoardGameRentalForm(request.POST)
+    game = BoardGameInstance.objects.get(pk = id)
+    game.status = "r"
+    game.latest_borrower = request.user
+    game.save()
 
-        if form.is_valid():
-            game = form.save(commit = False)
-            game.borrower = request.user
-            game.save()
-            obj, created = BoardGameInstance.objects.get_or_create(id = game.game_instance.id)
-            obj.status = "r"
-            obj.latest_borrower = request.user
-            obj.save()
-            return redirect(reverse("bored_games:profile"))
+    rental, created = BoardGameRental.objects.get_or_create(game_instance = game, borrower = request.user)
+    rental.save()
     
-    else:
-        form = BoardGameRentalForm()
-    
-    return render(request, "bored_games_app/rent_game.html", context = {"form": form})
+    return redirect(reverse("bored_games:profile"))
 
 
 @login_required

@@ -22,8 +22,8 @@ urlpatterns = [
     # Form to add new copy/instance of an existing game in the database
     path("add_copy/", views.new_copies, name = "add_copy"),
 
-    # Form to rent an available copy/instance of a game
-    path("rent_game/", views.game_rentals, name = "rent_game"),
+    # Form to rent an available copy/instance of a game (no template rendered)
+    path("rent_game/<int:id>", views.game_rentals, name = "rent_game"),
 
     # Page to view user's rented games and user's reviews
     path("profile/", views.user_rentals, name = "profile"),
@@ -34,7 +34,7 @@ urlpatterns = [
     # Form to edit user's existing review
     path("edit_review/<int:pk>", views.review_edit, name = "edit_review"),
 
-     # Form to delete review added by user
+     # Form to delete review added by user (no template rendered)
     path("delete_review/<int:pk>", views.delete_review, name = "delete_review"),
 
     # Form to register new user
