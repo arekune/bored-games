@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/bored_games_app/game_detail.css">
+{% endblock stylesheet %}
+
+{% block title %}
+ <title>Bored Games – {{ game.title }}</title>
+{% endblock title %}
+
+{% block page %}
+<div class="page">
+    <h1>Bored Games</h1>
+
+    <div class="buttons">
+        <a href="{% url "bored_games:add_copy" %}" id="add-copy">Add a new copy of this game</a>
+        <a href="{% url "bored_games:add_review" %}" id="add-review">Add review</a>
+    </div>
+
+    <div class="game-field">
+        <h2>{{ game.title }}</h2>
+        <div class="players">
+            <ul>
+                <li>Number of players:</li>
+                {% if game.min_no_of_players == game.max_no_of_players %}
+                    <li>{{ game.min_no_of_players }}</li>
+                {% else %}
+                    <li>{{ game.min_no_of_players }} – {{ game.max_no_of_players }}</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="summary-field">
+        <h2>Summary</h2>
+        <div class="summary">
+            <li><span id="summary">{{ game.summary }}</span></li>
+        </div>
+    </div>
+
+    <div class="review-field">
+        <h2>Reviews</h2>
+        <div class="reviews">
+            {% for review in reviews %}
+                <ul>
+                    <li><span id="reviewer">{{ review.review_author }}:</span></li>
+                    <li><span id="review">{{ review }}</span></li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock page %}
