@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/bored_games_app/my_rentals.css">
+{% endblock stylesheet %}
+
+{% block title %}
+ <title>Bored Games – Profile</title>
+{% endblock title %}
+
+{% block page %}
+<div class="page">
+    <h1>Hi, <span class="username">{{ user.get_username }}</span>!</h1>
+
+    <div class="content">
+        <h2>Your current rentals</h2>
+        <ul>
+            <div class="game">
+                <li>Title</li>
+                <li>Number of Players</li>
+                <li>Return game</li>
+            </div>
+
+            {% for rental in rentals %}
+                <div class="game-data">
+                    <a href="{% url "bored_games:game_detail" rental.game_instance.game.id %}">
+                        <li>{{ rental.game_instance.game }}</li>
+                    </a>
+                    {% if rental.game_instance.game.min_no_of_players == rental.game_instance.game.max_no_of_players %}
+                        <li>{{ rental.game_instance.game.min_no_of_players }}</li>
+                    {% else %}
+                        <li>{{ rental.game_instance.game.min_no_of_players }} – {{ rental.game_instance.game.max_no_of_players }}</li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url "bored_games:remove_rental" rental.pk %}" class="button">Return</a>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+
+        <h2 id="review">Your game reviews</h2>
+        <ul>
+            <div class="review">
+                <li>Game</li>
+                <li>Review</li>
+                <li>Edit review</li>
+            </div>
+
+            {% for review in reviews %}
+                <div class="review-data">
+                    <a href="{% url "bored_games:game_detail" review.game.id %}">
+                        <li>{{ review.game }}</li>
+                    </a>
+                    <li>{{ review|wordwrap:60|linebreaks }}</li>
+                    <li>
+                        <a href="{% url "bored_games:edit_review" review.pk %}" class="button">Edit</a>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock page %}
