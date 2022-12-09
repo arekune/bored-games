@@ -93,19 +93,13 @@ def new_reviews(request, id):
 
 
 @login_required
-def new_copies(request):
+def new_copies(request, id):
 
-    if request.method == "POST":
-        form = BoardGameInstanceForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect(reverse("bored_games:games"))
+    game = BoardGame.objects.get(pk = id)
+    obj = BoardGameInstance.objects.create(game = game)
+    obj.save()
     
-    else:
-        form = BoardGameInstanceForm()
-    
-    return render(request, "bored_games_app/add_copy.html", context = {"form": form})
+    return redirect(reverse("bored_games:games"))
 
 
 @login_required

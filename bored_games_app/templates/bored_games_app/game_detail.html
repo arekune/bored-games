@@ -14,7 +14,7 @@
     <h1>Bored Games</h1>
 
     <div class="buttons">
-        <a href="{% url "bored_games:add_copy" %}" id="add-copy">Add a new copy of this game</a>
+        <a href="{% url "bored_games:add_copy" game.id %}" id="add-copy">Add a new copy of this game</a>
         <a href="{% url "bored_games:add_review" game.id %}" id="add-review">Add review</a>
     </div>
 
