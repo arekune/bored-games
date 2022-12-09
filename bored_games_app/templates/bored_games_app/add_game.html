@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/bored_games_app/forms.css">
+{% endblock stylesheet %}
+
+{% block title %}
+ <title>Bored Games – Add New Game</title>
+{% endblock title %}
+
+{% block page %}
+<div class="page">
+
+    <div class="content">
+        <h1>Add New Game</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form }}
+            </table>
+    
+            <button type="submit">Add game</button>
+        </form>
+    </div>
+{% endblock page %}

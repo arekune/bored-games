@@ -1,7 +1,86 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block content %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/bored_games_app/games.css">
+{% endblock stylesheet %}
 
-<h1>All boardgames are listed here</h1>
+{% block title %}
+ <title>Bored Games – Games</title>
+{% endblock title %}
 
-{% endblock content %}
+{% block page %}
+<div class="page">
+    <h1>Bored Games</h1>
+
+    <a href="{% url "bored_games:add_game" %}" id="add-game">Add new game</a>
+
+    <div class="content">
+        <ul>
+            <div class="game">
+                <li>Title</li>
+                <li>Number of Players</li>
+                <li>Games Available</li>
+            </div>
+
+            {% for game in games %}
+                <div class="game-data">
+                    <a href="{% url "bored_games:game_detail" game.id %}">
+                        <li>{{ game.title }}</li>
+                    </a>
+                    {% if game.min_no_of_players == game.max_no_of_players %}
+                        <li>{{ game.min_no_of_players }}</li>
+                    {% else %}
+                        <li>{{ game.min_no_of_players }} – {{ game.max_no_of_players }}</li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        {% if limit_reached == True %}
+                            <div class="message">
+                                <li>Return at least 1 game to rent this game</li>
+                            </div>
+                        {% else %}
+                            <li>
+                                <a href="{% url "bored_games:rent_game" %}" class="button">Rent the Game!</a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        <li>Log in to rent games</li>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% if no_rentals != True %}
+        <div class="rented-content">
+            <ul>
+                <div class="rented-game">
+                    <li>Title</li>
+                    <li>Number of Players</li>
+                    <li class="checkmark">On loan</li>
+                </div>
+
+                {% for game in rented_games %}
+                    <div class="rented-game-data">
+                        <a href="{% url "bored_games:game_detail" game.id %}">
+                            <li>{{ game.title }}</li>
+                        </a>
+                        {% if game.min_no_of_players == game.max_no_of_players %}
+                            <li>{{ game.min_no_of_players }}</li>
+                        {% else %}
+                            <li>{{ game.min_no_of_players }} – {{ game.max_no_of_players }}</li>
+                        {% endif %}
+                        <li class="checkmark">✓</li>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+{% if extended_page == True %}
+    <div class="overflow">
+
+    </div>
+{% endif %}
+{% endblock page %}

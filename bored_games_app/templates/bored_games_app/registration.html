@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/bored_games_app/registration.css">
+{% endblock stylesheet %}
+
+{% block title %}
+ <title>Bored Games – Register</title>
+{% endblock title %}
+
+{% block page %}
+<div class="page">
+
+    <div class="content">
+        <h1>Register new user</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_p }}
+            </table>
+    
+            <button type="submit">Register</button>
+        </form>
+    </div>
+{% endblock page %}
