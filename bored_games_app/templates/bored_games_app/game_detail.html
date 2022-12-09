@@ -45,7 +45,7 @@
             {% for review in reviews %}
                 <ul>
                     <li><span id="reviewer">{{ review.review_author }}:</span></li>
-                    <li><span id="review">{{ review }}</span></li>
+                    <li><span id="review">{{ review|wordwrap:100|linebreaks }}</span></li>
                 </ul>
             {% endfor %}
         </div>
