@@ -9,13 +9,14 @@ media
 # Backup files # 
 *.bak 
 
+# macOS #
 # General
 .DS_Store
 .AppleDouble
 .LSOverride
-ehthumbs.db
+ehthumbs*.db
 Icon
-Thumbs.db
+Thumbs.db*
 
 # Thumbnails
 ._*
@@ -135,7 +136,10 @@ celerybeat-schedule.*
 .venv 
 env/ 
 venv/ 
+myenv/
+myvenv/
 ENV/ 
+VENV/
 env.bak/ 
 venv.bak/ 
 ll_env/
@@ -169,7 +173,8 @@ GitHub.sublime-settings
 !.vscode/tasks.json 
 !.vscode/launch.json 
 !.vscode/extensions.json 
-.history
+.history/
+*.code-workspace
 
 # Vim #
 *.swo
