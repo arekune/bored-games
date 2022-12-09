@@ -41,7 +41,8 @@ h1:hover {
 .content {
   max-height: 18.5rem;
   max-width: 95vw;
-  overflow: auto;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .content ul {
@@ -102,8 +103,9 @@ h1:hover {
 .rented-content {
   margin-top: 4rem;
   max-height: 18rem;
-  max-width: 80vw;
-  overflow: auto;
+  max-width: 85vw;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .rented-content ul {
