@@ -1,20 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block content %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/bored_games_app/landing.css">
+{% endblock stylesheet %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% block title %}
+ <title>Bored Games – Welcome</title>
+{% endblock title %}
 
-    <a href="{% url "bored_games:games" %}">All boardgames</a>
+{% block page %}
+<div class="page">
+    <h1>Bored Games</h1>
 
-</body>
-</html>
+    <div class="content">
+        <h2>Welcome to our board gaming club!</h2>
+        <ul>
+            <li>We currently have a total of
+                <span id="copies">{{ game_instances }} copies</span> of
+                <span id="games">{{ games }} games</span>
+            </li>
+            <li>You can rent up to three games at a time from our collection</li>
+            <li>You can add new games to our collection</li>
+            <li>You can also add new copies of the games in our collection</li>
+        </ul>
+        <div class="button">
+            <a href="{% url "bored_games:games" %}">
+                Browse our games!
+             </a>
 
-{% endblock content %}
+        </div>
+    </div>
+{% endblock page %}
