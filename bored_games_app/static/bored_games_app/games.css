@@ -39,7 +39,7 @@ h1:hover {
 }
 
 .content {
-  max-height: 18rem;
+  max-height: 18.5rem;
   max-width: 95vw;
   overflow: auto;
 }
