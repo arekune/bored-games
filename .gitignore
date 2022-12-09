@@ -9,6 +9,33 @@ media
 # Backup files # 
 *.bak 
 
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+ehthumbs.db
+Icon
+Thumbs.db
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
 # If you are using PyCharm # 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -50,10 +77,13 @@ atlassian-ide-plugin.xml
 *$py.class 
 
 # Distribution / packaging 
-.Python build/ 
+.Python build/
+docs/_build/
+docs/locale/
 develop-eggs/ 
 dist/ 
 downloads/ 
+node_modules/
 eggs/ 
 .eggs/ 
 lib/ 
@@ -62,6 +92,7 @@ parts/
 sdist/ 
 var/ 
 wheels/ 
+MANIFEST
 *.egg-info/ 
 .installed.cfg 
 *.egg 
@@ -69,11 +100,14 @@ wheels/
 *.spec 
 
 # Installer logs 
+logs/
 pip-log.txt 
 pip-delete-this-directory.txt 
 
 # Unit test / coverage reports 
-htmlcov/ 
+htmlcov/
+tests/coverage_html/
+tests/report/
 .tox/ 
 .coverage 
 .coverage.* 
@@ -136,3 +170,8 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Vim #
+*.swo
+*.swp
+*.swn
