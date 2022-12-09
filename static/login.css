@@ -1,0 +1,93 @@
+.page {
+  align-items: center;
+  background-image: url("login-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1 {
+  color: rgb(203, 226, 71);
+  font-size: 4rem;
+  margin: 1.56rem 0 1.56rem 0;
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+}
+
+h1:hover {
+  color: rgb(233, 210, 107);
+  transform: scale(1.01);
+}
+
+.content {
+  background-color: rgba(55, 67, 68, 0.85);
+  height: 100vh;
+  padding: 2.5rem;
+  width: 50rem;
+}
+
+form input,
+select {
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1.25rem;
+  margin: 1rem;
+  outline: none;
+  padding: 1rem;
+}
+
+select {
+  background-color: rgba(55, 67, 68, 0.85);
+  border: none;
+}
+
+label {
+  font-size: 1.56rem;
+  font-weight: 100;
+}
+
+button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 1.25rem;
+  margin: 1.875rem 0 0 50%;
+  outline: none;
+  padding: 1rem 1.56rem;
+  transform: translateX(-50%);
+}
+
+#id_username {
+  margin-right: 12rem;
+}
+
+h2 {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.register a {
+  background-color: rgb(248, 159, 56);
+  border-radius: 8px;
+  box-shadow: 0.125rem 0.25rem 0.5rem rgb(68, 67, 67);
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 550;
+  margin-left: 16rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  position: absolute;
+  text-decoration: none;
+}
+
+.register a:hover {
+  background-color: rgb(243, 187, 124);
+}

@@ -1,5 +1,45 @@
-<p>
-    <a href="{% url "bored_games:landing" %}">Homepage</a>
-</p>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "base.css" %}">
+    {% block stylesheet %}
+    {% endblock stylesheet %}
+    {% block title %}
+    <title>Bored Games - Base Template</title>
+    {% endblock title %}
+</head>
+<body>
+    <header class="navbar">
+        <div id="home">
+            <a href="{% url "bored_games:landing" %}">Home</a>
+        </div>
+        <div id="games">
+            <a href="{% url "bored_games:games" %}">Games</a>
+        </div>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url "bored_games:profile" %}">My rentals</a>
+                </li>
+                    <li>
+                        <a href="{% url "logout" %}?next={{request.path}}">Log out</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url "login" %}?next={{request.path}}">Log in</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
 
-{% block content %}{% endblock content %}
+    {% block page %}
+    
+    {% endblock page %}
+</body>
+</html>

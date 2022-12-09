@@ -1,0 +1,124 @@
+.page {
+  align-items: center;
+  background-image: url("board-game-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(158, 235, 215);
+  display: flex;
+  flex-direction: column;
+  height: 101vh;
+  width: calc(100vw - 0.95rem);
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 1.56rem 0 1.56rem 0;
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+}
+
+h1:hover {
+  color: rgb(233, 210, 107);
+  transform: scale(1.01);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+#add-copy,
+#add-review {
+  background-color: rgb(248, 159, 56);
+  border-radius: 8px;
+  box-shadow: 0.125rem 0.25rem 0.5rem rgb(68, 67, 67);
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 550;
+  margin: 2rem 4rem 2rem 2rem;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+}
+
+#add-copy:hover,
+#add-review:hover {
+  background-color: rgb(243, 187, 124);
+}
+
+.game-field {
+  color: white;
+  background-color: rgba(50, 57, 34, 0.65);
+  justify-content: center;
+  padding: 1.875rem 2.8rem;
+  width: calc(100vw - 0.95rem);
+}
+
+.game-field h2 {
+  font-size: 3.125rem;
+  margin-bottom: 1.5625rem;
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+}
+
+.game-field h2:hover {
+  color: rgb(236, 83, 72);
+  transform: scale(1.01);
+}
+
+.summary-field {
+  color: white;
+  background-color: rgba(50, 57, 34, 0.65);
+  justify-content: center;
+  padding: 1.875rem;
+  width: calc(100vw - 0.95rem);
+}
+
+.summary-field h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5625rem;
+  text-align: center;
+}
+
+.review-field {
+  color: white;
+  background-color: rgba(50, 57, 34, 0.65);
+  justify-content: center;
+  padding: 1.875rem;
+  width: calc(100vw - 0.95rem);
+}
+
+.review-field h2 {
+  font-size: 2rem;
+  margin: 1.5625rem 0 1.5625rem 0;
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 3.125rem;
+  width: 100%;
+}
+
+li {
+  font-size: 1.875rem;
+  list-style: none;
+}
+
+.summary {
+  display: flex;
+  height: fit-content;
+  margin-left: 15rem;
+  text-align: center;
+  width: 80rem;
+}
+
+#summary {
+  font-size: 1.5rem;
+}
+
+#reviewer,
+#review {
+  font-size: 1.3rem;
+}
