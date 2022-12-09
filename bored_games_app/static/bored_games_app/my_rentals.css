@@ -37,6 +37,12 @@ h2 {
   margin-left: 4rem;
 }
 
+.content {
+  max-height: 44rem;
+  max-width: 95vw;
+  overflow: auto;
+}
+
 .content ul {
   display: flex;
   flex-direction: column;
@@ -69,6 +75,7 @@ h2 {
 .review-data {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
+  max-width: 65rem;
   padding: 1rem;
   place-content: center;
 }
