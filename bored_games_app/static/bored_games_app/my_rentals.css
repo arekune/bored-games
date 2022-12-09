@@ -74,8 +74,8 @@ h2 {
 .review,
 .review-data {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  max-width: 65rem;
+  grid-template-columns: 1fr 4fr 1fr 1fr;
+  max-width: 80rem;
   padding: 1rem;
   place-content: center;
 }
@@ -90,6 +90,7 @@ h2 {
 .game-data li,
 .review-data li {
   font-size: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 .game-data:hover,

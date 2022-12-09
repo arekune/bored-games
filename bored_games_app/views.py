@@ -174,6 +174,12 @@ def review_edit(request, pk):
     return render(request, "bored_games_app/edit_review.html", context = context)
 
 
+def delete_review(request, pk):
+    review = BoardGameReview.objects.get(pk = pk)
+    review.delete()
+    return redirect(reverse("bored_games:profile"))
+    
+
 # CLASS-BASED VIEWS
 
 class RegistrationView(CreateView):

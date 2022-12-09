@@ -34,6 +34,9 @@ urlpatterns = [
     # Form to edit user's existing review
     path("edit_review/<int:pk>", views.review_edit, name = "edit_review"),
 
+     # Form to delete review added by user
+    path("delete_review/<int:pk>", views.delete_review, name = "delete_review"),
+
     # Form to register new user
     path("registration/", views.RegistrationView.as_view(), name = "registration")
 ]

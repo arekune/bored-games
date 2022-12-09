@@ -56,6 +56,9 @@
                     <li>
                         <a href="{% url "bored_games:edit_review" review.pk %}" class="button">Edit</a>
                     </li>
+                    <li>
+                        <a href="{% url "bored_games:delete_review" review.pk %}" class="button">Delete</a>
+                    </li>
                 </div>
             {% endfor %}
         </ul>
