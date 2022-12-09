@@ -78,7 +78,7 @@ def new_reviews(request, id):
     game = BoardGame.objects.get(pk = id)
 
     if request.method == "POST":
-        form = ReviewForm(request.POST, initial={"game": game, "review": "vittu"})
+        form = ReviewForm(request.POST, initial={"game": game})
 
         if form.is_valid():
             review = form.save(commit = False)
