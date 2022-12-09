@@ -34,18 +34,12 @@ def games_page(request):
         no_rentals = True
     else:
         no_rentals = False
-    
-    if BoardGame.objects.count() > 6:
-        extended_page = True
-    else:
-        extended_page = False
 
     context = {
         "games": games,
         "rented_games": rented_games,
         "limit_reached": limit_reached,
-        "no_rentals": no_rentals,
-        "extended_page": extended_page
+        "no_rentals": no_rentals
         }
 
     return render(request, "bored_games_app/games.html", context = context)
