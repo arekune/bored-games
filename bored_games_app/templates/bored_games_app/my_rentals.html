@@ -52,7 +52,7 @@
                     <a href="{% url "bored_games:game_detail" review.game.id %}">
                         <li>{{ review.game }}</li>
                     </a>
-                    <li>{{ review|wordwrap:60|linebreaks }}</li>
+                    <li>{{ review|wordwrap:300|linebreaks }}</li>
                     <li>
                         <a href="{% url "bored_games:edit_review" review.pk %}" class="button">Edit</a>
                     </li>
@@ -62,7 +62,5 @@
                 </div>
             {% endfor %}
         </ul>
-
     </div>
-
 {% endblock page %}
