@@ -48,9 +48,16 @@ def games_page(request):
 def game_details(request, id):
     game = get_object_or_404(BoardGame, pk = id)
     reviews = BoardGameReview.objects.filter(game = id)
+
+    if reviews.count() == 0:
+        no_reviews = True
+    else:
+        no_reviews = False
+
     context = {
         "game": game,
-        "reviews": reviews
+        "reviews": reviews,
+        "no_reviews": no_reviews
         }
     return render(request, "bored_games_app/game_detail.html", context = context)
 

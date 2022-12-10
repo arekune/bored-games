@@ -10,7 +10,11 @@
 {% endblock title %}
 
 {% block page %}
+{% if no_reviews != True %}
 <div class="page">
+{% else %}
+<div class="no-reviews">
+{% endif %}
     <h1>Bored Games</h1>
 
     <div class="buttons">
