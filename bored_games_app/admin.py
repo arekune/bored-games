@@ -12,9 +12,9 @@ class BoardGameAdmin(admin.ModelAdmin):
 
 class BoardGameInstanceAdmin(admin.ModelAdmin):
     
-    list_display = ("id", "game", "status", "latest_borrower", "date_modified", "date_added")
+    list_display = ("id", "game", "status", "latest_borrower", "date_modified", "added_by", "date_added")
     list_display_links = ("id", "game")
-    ordering = ("id", "game", "status", "latest_borrower", "date_modified")
+    ordering = ("id", "game", "status", "latest_borrower", "date_modified", "added_by")
 
 class BoardGameRentalAdmin(admin.ModelAdmin):
 

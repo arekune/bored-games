@@ -29,7 +29,14 @@ class BoardGameInstance(models.Model):
     """Model for each instance of a board game added into the database by users."""
 
     game = models.ForeignKey("BoardGame", on_delete = models.CASCADE)
-    latest_borrower = models.ForeignKey(User, on_delete = models.SET_NULL, null = True, blank = True)
+    
+    latest_borrower = models.ForeignKey(User, related_name = "latest_borrower", 
+                                        on_delete = models.SET_NULL,
+                                        null = True, blank = True)
+                                        
+    added_by = models.ForeignKey(User, related_name = "added_by",
+                                on_delete = models.SET_NULL,
+                                null = True, blank = True)
 
     LOAN_STATUS = (
         ("a", "Available"),
