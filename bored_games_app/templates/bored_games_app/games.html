@@ -13,7 +13,10 @@
 <div class="page">
     <h1>Bored Games</h1>
 
-    <a href="{% url "bored_games:add_game" %}" id="add-game">Add new game</a>
+    <div class="buttons">
+        <a href="{% url "bored_games:add_game" %}" id="add-game">Add new game</a>
+        <a href="{% url "bored_games:add_copies" %}" id="add-game">Add new copies of games</a>
+    </div>
 
     <div class="content">
         <ul>
