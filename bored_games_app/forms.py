@@ -48,6 +48,10 @@ class BoardGameRentalForm(ModelForm):
 
 class ReviewForm(ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        super(ReviewForm, self).__init__(*args, **kwargs)
+        self.fields["game"].widget.attrs["readonly"] = True
+
     class Meta:
         model = BoardGameReview
         fields = ["game", "review"]
