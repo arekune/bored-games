@@ -39,12 +39,42 @@
             {% endfor %}
         </ul>
 
+        <h2 id="user-games">Your games</h2>
+        <ul>
+            <div class="game">
+                <li>Title</li>
+                <li>Number of Players</li>
+                <li>On loan to / Available</li>
+            </div>
+
+            {% for game in games %}
+                <div class="game-data">
+                    <a href="{% url "bored_games:game_detail" game.game.id %}">
+                        <li>{{ game.game }}</li>
+                    </a>
+                    {% if game.game.min_no_of_players == game.game.max_no_of_players %}
+                        <li>{{ game.game.min_no_of_players }}</li>
+                    {% else %}
+                        <li>{{ game.game.min_no_of_players }} – {{ game.game.max_no_of_players }}</li>
+                    {% endif %}
+                    {% if game.status == "a" %}
+                        <li>
+                            <a href="{% url "bored_games:remove_game_instance" game.pk %}" class="button">Delete</a>
+                        </li>
+                    {% else %}
+                        <li>{{ game.latest_borrower }}</li>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </ul>
+
         <h2 id="review">Your game reviews</h2>
         <ul>
             <div class="review">
                 <li>Game</li>
                 <li>Review</li>
                 <li>Edit review</li>
+                <li>Delete review</li>
             </div>
 
             {% for review in reviews %}
