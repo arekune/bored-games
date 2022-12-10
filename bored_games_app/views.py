@@ -39,9 +39,8 @@ def games_page(request):
         "games": games,
         "rented_games": rented_games,
         "limit_reached": limit_reached,
-        "no_rentals": no_rentals
+        "no_rentals": no_rentals,
         }
-
     return render(request, "bored_games_app/games.html", context = context)
 
 
@@ -70,7 +69,7 @@ def new_games(request):
 
         if form.is_valid():
             game = form.save()
-            BoardGameInstance.objects.get_or_create(game = game)
+            BoardGameInstance.objects.get_or_create(game = game, added_by = request.user)
             return redirect(reverse("bored_games:game_detail", kwargs = {"id": game.id}))
         
     else:
@@ -100,13 +99,28 @@ def new_reviews(request, id):
 
 
 @login_required
-def new_copies(request, id):
+def new_copy(request, id):
 
     game = BoardGame.objects.get(pk = id)
-    obj = BoardGameInstance.objects.create(game = game)
+    obj = BoardGameInstance.objects.create(game = game, added_by = request.user)
     obj.save()
-    
+
     return redirect(reverse("bored_games:games"))
+
+@login_required
+def new_copies(request):
+
+    if request.method == "POST":
+        form = BoardGameInstanceForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("bored_games:games"))
+    
+    else:
+        form = BoardGameInstanceForm()
+    
+    return render(request, "bored_games_app/add_copy.html", context = {"form": form})
 
 
 @login_required
@@ -119,17 +133,19 @@ def game_rentals(request, id):
 
     rental, created = BoardGameRental.objects.get_or_create(game_instance = game, borrower = request.user)
     rental.save()
-    
+
     return redirect(reverse("bored_games:profile"))
 
 
 @login_required
 def user_rentals(request):
     rentals = BoardGameRental.objects.filter(borrower = request.user)
+    games = BoardGameInstance.objects.filter(added_by = request.user)
     reviews = BoardGameReview.objects.filter(review_author = request.user)
 
     context = {
         "rentals": rentals,
+        "games": games,
         "reviews": reviews
     }
     return render(request, "bored_games_app/my_rentals.html", context = context)
@@ -141,6 +157,12 @@ def rental_return(request, pk):
     obj.status = "a"
     rental.delete()
     obj.save()
+    return redirect(reverse("bored_games:profile"))
+
+
+def game_instance_delete(request, pk):
+    game = BoardGameInstance.objects.get(pk = pk)
+    game.delete()
     return redirect(reverse("bored_games:profile"))
 
 
@@ -165,7 +187,6 @@ def review_edit(request, pk):
         "review": review,
         "form": form
         }
-
     return render(request, "bored_games_app/edit_review.html", context = context)
 
 
@@ -173,7 +194,7 @@ def delete_review(request, pk):
     review = BoardGameReview.objects.get(pk = pk)
     review.delete()
     return redirect(reverse("bored_games:profile"))
-    
+
 
 # CLASS-BASED VIEWS
 
