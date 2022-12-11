@@ -19,7 +19,9 @@
 
     <div class="buttons">
         <a href="{% url "bored_games:add_copy" game.id %}" id="add-copy">Add a new copy of this game</a>
-        <a href="{% url "bored_games:add_review" game.id %}" id="add-review">Add review</a>
+        {% if already_reviewed != True %}
+            <a href="{% url "bored_games:add_review" game.id %}" id="add-review">Add review</a>
+        {% endif %}
     </div>
 
     <div class="game-field">

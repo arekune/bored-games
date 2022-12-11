@@ -48,6 +48,11 @@ def game_details(request, id):
     game = get_object_or_404(BoardGame, pk = id)
     reviews = BoardGameReview.objects.filter(game = id)
 
+    if BoardGameReview.objects.filter(game = id).filter(review_author = request.user).count() > 0:
+        already_reviewed = True
+    else:
+        already_reviewed = False
+
     if reviews.count() == 0:
         no_reviews = True
     else:
@@ -56,7 +61,8 @@ def game_details(request, id):
     context = {
         "game": game,
         "reviews": reviews,
-        "no_reviews": no_reviews
+        "no_reviews": no_reviews,
+        "already_reviewed": already_reviewed
         }
     return render(request, "bored_games_app/game_detail.html", context = context)
 
