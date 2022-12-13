@@ -68,7 +68,7 @@
                         <a href="{% url "bored_games:game_detail" game.game.id %}">
                             <li>{{ game.game.title }}</li>
                         </a>
-                        {% if game.game.game.min_no_of_players == game.game.max_no_of_players %}
+                        {% if game.game.min_no_of_players == game.game.max_no_of_players %}
                             <li>{{ game.game.min_no_of_players }}</li>
                         {% else %}
                             <li>{{ game.game.min_no_of_players }} – {{ game.game.max_no_of_players }}</li>
