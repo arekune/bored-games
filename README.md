@@ -41,7 +41,7 @@ Generate a new secret key (for instance on [Djecrety](https://djecrety.ir/)).
 Add your secret key into the `.env` file:
 
 ```bash
-SECRET_KEY=yoursecretkey
+SECRET_KEY = yoursecretkey
 ```
 
 In `settings.py`, add the following if you installed python-decouple:
