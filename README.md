@@ -55,7 +55,6 @@ SECRET_KEY = config('SECRET_KEY')
 Or if you installed python-dotenv:
 
 ```bash
-import os
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
