@@ -1,4 +1,4 @@
-# Bored Games       <img alt="GitHub" src="https://img.shields.io/github/license/smahesh29/Django-WebApp">
+# Bored Games       [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 This project is practice work for the Sovellusohjelmointi (Application Programming) course of the Turku University of Applied Sciences. The task was to create a web application with Django where users can add and rent board games.
 
