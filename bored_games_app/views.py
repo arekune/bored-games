@@ -146,7 +146,7 @@ def game_rentals(request, id):
 @login_required
 def user_rentals(request):
     rentals = BoardGameRental.objects.filter(borrower = request.user)
-    games = BoardGameInstance.objects.filter(added_by = request.user)
+    games = BoardGameInstance.objects.filter(added_by = request.user).order_by("game")
     reviews = BoardGameReview.objects.filter(review_author = request.user)
 
     context = {
