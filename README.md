@@ -38,7 +38,7 @@ $ pip install python-dotenv
 
 Create a `.env` file in your root (project-level) directory.  
 Generate a new secret key (for instance on [Djecrety](https://djecrety.ir/)).  
-Add your secret key file into the `.env` file:
+Add your secret key into the `.env` file:
 
 ```bash
 SECRET_KEY=yoursecretkey
